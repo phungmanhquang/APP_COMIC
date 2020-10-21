@@ -1,3 +1,8 @@
 import { sortContet } from "./data"
+import { FullContent } from "./dataFullcontent"
 
-export const getDataByCategory = (category: any) => sortContet[category]
+export const getDataByCategory = (category: any) => {
+	console.log('service ::: ', sortContet.filter(x => x.type === category))
+	return sortContet.filter(x => x.type === category)}
+
+export const getComicById = (id: any) => FullContent.find(x => x.id === id)

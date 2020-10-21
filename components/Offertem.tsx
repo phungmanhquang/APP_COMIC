@@ -31,10 +31,10 @@ const DATA = [
   }
 ]
 
-export default function ListItemComponent() {
+export default function ListItemComponent(props: {onshowDetail: any}) {
   return (
     <View style={styles.container}>
-      <Text>Đề xuất</Text>
+      <Text style={styles.titleText}>Đề xuất</Text>
       <View style={styles.outSideList}>
         {
           DATA.map(x => 
@@ -42,6 +42,7 @@ export default function ListItemComponent() {
                 Data={x}
                 style={{width: '48%', height: 160}} 
                 showDesc  
+                onshowDetail={props.onshowDetail}
               />
           )
         }
@@ -55,11 +56,11 @@ const styles = StyleSheet.create({
   container: {
     padding: 15
   },
-  // titleText: { 
-  //   fontSize: 20, 
-  //   fontWeight: 400, 
-  //   marginBottom: 12  
-  // },
+  titleText: { 
+    fontSize: 25, 
+    fontWeight: '400', 
+    marginBottom: 12  
+  },
   outSideList: {
     display: "flex",
     flexDirection: "row",

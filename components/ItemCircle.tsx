@@ -3,7 +3,7 @@ import { Image, StyleSheet } from 'react-native';
 
 import { Text, View } from '../components/Themed';
 
-export default function ItemCircleComponent(props: { style: any, Data: any }) {
+export default function ItemCircleComponent(props: { style: any, Data: any, onshowDetail: any }) {
   return (
     <View  style={{...styles.ItemImg, ...props.style}}>
         <Image
@@ -12,7 +12,9 @@ export default function ItemCircleComponent(props: { style: any, Data: any }) {
         />
         <Text 
             style={styles.ItemTitle}
-            onPress={() => console.log('http://google.com')}>
+            onPress={() => {
+              props.onshowDetail(props.Data.id)
+            }}>
             {props.Data.name}
         </Text>
     </View>  

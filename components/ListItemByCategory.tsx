@@ -6,36 +6,9 @@ import ItemComponent from "./Item";
 import { ScrollView } from "react-native-gesture-handler";
 import { getDataByCategory } from "../service/service";
 
-// const DATA = [
-//   {
-//     id: 1,
-//     name: 'Truyen ngon tinh ABC',
-//     desc: '23 react-navigation-tabs depends on react-navigation package.',
-//     img: require('../assets/commic/nghich-thien-chien-than/avt.jpg')
-//   },
-//   {
-//     id: 2,
-//     name: 'Truyen Kinh di ABC',
-//     desc: '23 react-navigation-tabs depends on react-navigation package.',
-//     img: require('../assets/commic/quy-luat-nam-ban-menh-cua-ho-ly/avt.jpg')
-//   },
-//   {
-//     id: 3,
-//     name: 'Truyen hai huoc ABC',
-//     desc: '23 react-navigation-tabs depends on react-navigation package.',
-//     img: require('../assets/commic/tieu_thuyet-ba-thien-ha/avt.jpg')
-//   },
-//   {
-//     id: 4,
-//     name: 'Truyen pha an ABC',
-//     desc: '23 react-navigation-tabs depends on react-navigation package.',
-//     img: require('../assets/commic/xuyen-khong-vao-the-gioi-nu-cuong/avt.jpg')
-//   }
-// ]
-
-export default function ListItemByCategoryComponent(props:{categoryId: number}) {
+export default function ListItemByCategoryComponent(props:{categoryId: number, onshowDetail: any}) {
 	const { categoryId } = props
-	const [data, setData] = React.useState([])
+	const [data, setData] = React.useState<any[]>([])
 	React.useEffect(() => {
 		switch (props.categoryId) {
 			case 1:
@@ -65,8 +38,10 @@ export default function ListItemByCategoryComponent(props:{categoryId: number}) 
 			<View style={styles.container}>
 				<View style={styles.outSideList}>
 					{
-						data ? data?.map(x => 
+						data ? data?.map((x, i) => 
 								<ItemComponent 
+									onshowDetail={props.onshowDetail}
+									key={i}
 									Data={x}
 									style={{width: '32%', height: 200}} 
 									showDesc  

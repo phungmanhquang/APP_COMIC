@@ -9,15 +9,24 @@ import { Text, View } from '../components/Themed';
 import TrendingItemComponent from '../components/TrendingItem';
 
 
-export default function HomeScreen() {
+export default function HomeScreen(props: {navigation: any}) {
+  const onshowDetail  = (id: any) => {
+    props.navigation.navigate('Detail', {id})
+  }
   return (
     <View style={styles.container}>
       <ScrollView >
         <BannerComponent />
-        <ListItemComponent />
-        <TrendingItemComponent />
+        <ListItemComponent 
+          onshowDetail={(id: any) => onshowDetail(id)}
+        />
+        <TrendingItemComponent 
+          onshowDetail={(id: any) => onshowDetail(id)}
+        />
         <BannerComponent />
-        <HotItemComponent />
+        <HotItemComponent 
+          onshowDetail={(id: any) => onshowDetail(id)}
+        />
       </ScrollView> 
     </View>
   );

@@ -31,14 +31,15 @@ const DATA = [
   },
 ]
 
-export default function HotItemComponent() {
+export default function HotItemComponent(props: {onshowDetail: any}) {
   return (
     <View style={styles.container}>
-      <Text >Truyện hot</Text>
+      <Text style={styles.titleText} >Truyện hot</Text>
       <View style={styles.outSideList}>
         {
           DATA.map(x => 
               <ItemCircleComponent 
+                onshowDetail={props.onshowDetail}
                 Data={x}
                 style={{width: '24%', height: 80}} 
               />
@@ -54,11 +55,11 @@ const styles = StyleSheet.create({
   container: {
     padding: 15
   },
-  // title: { 
-  //     fontSize: 20, 
-  //     fontWeight: 400 , 
-  //     marginBottom: 12 
-  //   },
+  titleText: { 
+    fontSize: 25, 
+    fontWeight: '400', 
+    marginBottom: 12  
+  },
   outSideList: {
     display: "flex",
     flexDirection: "row",

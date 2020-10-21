@@ -13,7 +13,10 @@ function HomeA(){
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function CategoriesScreen() {
+export default function CategoriesScreen(props: {navigation: any}) {
+  const onshowDetail  = (id: any) => {
+    props.navigation.navigate('Detail', {id})
+  }
   return (
     // <NavigationContainer>
      <Tab.Navigator
@@ -21,12 +24,12 @@ export default function CategoriesScreen() {
         scrollEnabled : true
       }}
      >
-       <Tab.Screen name="Hành động" component={() => <ListItemByCategoryComponent categoryId={1} />} />
-       <Tab.Screen name="Tiểu thuyết" component={() => <ListItemByCategoryComponent categoryId={2} />} />
-       <Tab.Screen name="Kinh dị" component={() => <ListItemByCategoryComponent categoryId={3} />} />
-       <Tab.Screen name="Tình yêu" component={() => <ListItemByCategoryComponent categoryId={4} />} />
-       <Tab.Screen name="Phá án" component={() => <ListItemByCategoryComponent categoryId={5} />} />
-       <Tab.Screen name="Hài hước" component={() => <ListItemByCategoryComponent categoryId={6} />} />
+       <Tab.Screen name="Hành động" component={() => <ListItemByCategoryComponent onshowDetail={(id: any) => onshowDetail(id)} categoryId={1} />} />
+       <Tab.Screen name="Tiểu thuyết" component={() => <ListItemByCategoryComponent onshowDetail={(id: any) => onshowDetail(id)} categoryId={2} />} />
+       <Tab.Screen name="Kinh dị" component={() => <ListItemByCategoryComponent onshowDetail={(id: any) => onshowDetail(id)} categoryId={3} />} />
+       <Tab.Screen name="Tình yêu" component={() => <ListItemByCategoryComponent onshowDetail={(id: any) => onshowDetail(id)} categoryId={4} />} />
+       <Tab.Screen name="Phá án" component={() => <ListItemByCategoryComponent onshowDetail={(id: any) => onshowDetail(id)} categoryId={5} />} />
+       <Tab.Screen name="Hài hước" component={() => <ListItemByCategoryComponent onshowDetail={(id: any) => onshowDetail(id)} categoryId={6} />} />
      </Tab.Navigator>
     // </NavigationContainer>
   );

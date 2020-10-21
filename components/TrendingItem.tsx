@@ -51,12 +51,13 @@ const DATA = [
   },
 ]
 
-export default function TrendingItemComponent() {
+export default function TrendingItemComponent(props: {onshowDetail: any}) {
   return (
     <View style={styles.container}>
-      <Text >Thịnh hành</Text>
+      <Text style={styles.titleText} >Thịnh hành</Text>
       <View style={styles.outSideList}>
         <ItemComponent 
+            onshowDetail={props.onshowDetail}
             Data={DATA_1}
             style={{width: '100%', height: 150}} 
             showDesc  
@@ -64,6 +65,7 @@ export default function TrendingItemComponent() {
         {
           DATA.map(x => 
               <ItemComponent 
+                onshowDetail={props.onshowDetail}
                 Data={x}
                 style={{width: '31%', height: 175}} 
                 showDesc  
@@ -79,7 +81,11 @@ const styles = StyleSheet.create({
   container: {
     padding: 15
   },
-  // title: { fontSize: 20, fontWeight: 400  , marginBottom: 12},
+  titleText: { 
+    fontSize: 25, 
+    fontWeight: '400', 
+    marginBottom: 12  
+  },
   outSideList: {
     display: "flex",
     flexDirection: "row",
