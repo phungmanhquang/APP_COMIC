@@ -1,9 +1,22 @@
 import * as React from 'react';
 import { Image, StyleSheet } from 'react-native';
-
+import { AntDesign } from '@expo/vector-icons'; 
 import { Text, View } from '../components/Themed';
 
-export default function ItemComponent(props: { style: any, showDesc: boolean, Data: any, onshowDetail: any }) {
+export default function ItemComponent(props: { 
+  style: any, 
+  showDesc: boolean, 
+  Data: any, 
+  onshowDetail: any,
+  reset?: any,
+  showLiked?: boolean
+}) {
+
+  const onLikeItem = () => {
+    props.Data.onLike()
+    props.reset()
+  }
+
   React.useEffect(() => {
     // console.log('zozoz ::', props.Data)
   }, [props.Data])
@@ -26,6 +39,16 @@ export default function ItemComponent(props: { style: any, showDesc: boolean, Da
             {props.Data.desc}
           </Text>
           : null
+      }
+      {
+        props.showLiked ? 
+        <AntDesign 
+          name="heart" 
+          size={24} 
+          color={props.Data.liked ? 'red' : 'gray'} 
+          style={styles.Liked} 
+          onPress={() => onLikeItem()}
+        /> : null
       }
     </View>
   );
@@ -51,5 +74,10 @@ const styles = StyleSheet.create({
   },
   ItemTitle: { color: "#424141", fontSize: 12, fontWeight: "bold" },
   ItemDesc: { color: "#9e9e9e", fontSize: 10 },
+  Liked:{
+    position: 'absolute',
+    right: 8,
+    bottom: 24
+  }
 });
 

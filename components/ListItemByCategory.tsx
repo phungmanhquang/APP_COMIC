@@ -9,7 +9,7 @@ import { getDataByCategory } from "../service/service";
 export default function ListItemByCategoryComponent(props:{categoryId: number, onshowDetail: any}) {
 	const { categoryId } = props
 	const [data, setData] = React.useState<any[]>([])
-	React.useEffect(() => {
+	const reset = () => {
 		switch (props.categoryId) {
 			case 1:
 				setData(getDataByCategory('hanh_dong'))
@@ -32,6 +32,9 @@ export default function ListItemByCategoryComponent(props:{categoryId: number, o
 			default:
 				break;
 		}
+	}
+	React.useEffect(() => {
+		reset()
 	},[categoryId])
   return (
 		<ScrollView >
@@ -45,6 +48,8 @@ export default function ListItemByCategoryComponent(props:{categoryId: number, o
 									Data={x}
 									style={{width: '32%', height: 200}} 
 									showDesc  
+									showLiked
+									reset={() => reset()}
 								/>
 						) : null
 					}

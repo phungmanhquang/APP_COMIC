@@ -10,6 +10,7 @@ import CategoriesScreen from '../screens/Categories'
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import LikedScreend from '../screens/LikedScreen';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -36,7 +37,7 @@ export default function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Yêu thích"
-        component={TabOneNavigator}
+        component={TabThreeNavigator}
         options={{
           tabBarIcon: ({color}) => <Entypo name="heart" size={24} color={color} />,
         }}
@@ -88,3 +89,16 @@ function TabTwoNavigator() {
   );
 }
  
+const TabThreeStack = createStackNavigator<TabOneParamList>();
+
+function TabThreeNavigator() {
+  return (
+    <TabThreeStack.Navigator>
+      <TabThreeStack.Screen
+        name="TabOneScreen"
+        component={LikedScreend}
+        options={{ headerTitle: 'Yêu thích' }}
+      />
+    </TabThreeStack.Navigator>
+  );
+}

@@ -6,3 +6,5 @@ export const getDataByCategory = (category: any) => {
 	return sortContet.filter(x => x.type === category)}
 
 export const getComicById = (id: any) => FullContent.find(x => x.id === id)
+
+export const getComicLiked = () => sortContet.filter(x => x.liked === true)
